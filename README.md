@@ -20,8 +20,7 @@ Generic features like UI, tile maps, sounds, etc. are being worked on and added 
 - [CMake](https://cmake.org/) 3.14 or higher
 
 ## Demo
-See the early version running in the simulator here: 
-https://github.com/karurosu/corgo-engine/blob/main/demo.mp4?raw=true
+See captures of the engine here: https://github.com/karurosu/corgo-engine/tree/main/media
 
 ## Current state
 1. ECS Core: 90%. Need to do an optimization pass once everything else is running
