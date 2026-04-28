@@ -50,6 +50,21 @@
 			"group": "build"
 		},
 		{
+			"label": "CMake: build (samples)",
+			"type": "shell",
+			"command": "cmake",
+			"args": [
+				"--build",
+				"--preset",
+				"build-samples-vs2022-sim",
+				"--config",
+				"Debug"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
 			"label": "Device: configure (Debug)",
 			"type": "shell",
 			"command": "powershell",

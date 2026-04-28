@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.24)
 set(CMAKE_C_STANDARD 11)
 
-# Game Name Customization
-set(PLAYDATE_GAME_NAME corgo_engine)
+# Game Name — controls source directory (src/<name>/), artifact name (<name>.pdx),
+# and the CE_ENGINE_GAME_DIR compiler define. Override via CMake cache (e.g. in a preset).
+set(CE_GAME_NAME "game" CACHE STRING "Game name: drives src/<name>/ source glob and <name>.pdx artifact")
+set(PLAYDATE_GAME_NAME ${CE_GAME_NAME})
 
 project(${PLAYDATE_GAME_NAME} C ASM)
 
@@ -86,9 +88,9 @@ if (NOT CMAKE_CONFIGURATION_TYPES AND NOT CMAKE_BUILD_TYPE)
 endif()
 
 if (CMAKE_BUILD_TYPE STREQUAL "Release")
-	set(PLAYDATE_GAME_DEVICE corgo_engine_RELEASE)
+	set(PLAYDATE_GAME_DEVICE ${CE_GAME_NAME}_RELEASE)
 else()
-	set(PLAYDATE_GAME_DEVICE corgo_engine_DEVICE)
+	set(PLAYDATE_GAME_DEVICE ${CE_GAME_NAME}_DEVICE)
 endif()
 
 # Core Files
@@ -101,7 +103,7 @@ file(GLOB UTILS "src/utils/*.c" "src/utils/*.h")
 file(GLOB ENGINE "src/engine/*.c" "src/engine/*.h" "src/engine/**/*.c" "src/engine/**/*.h")
 
 # Game Files
-file(GLOB GAME "src/game/*.c" "src/game/*.h" "src/game/**/*.c" "src/game/**/*.h")
+file(GLOB GAME "src/${CE_GAME_NAME}/*.c" "src/${CE_GAME_NAME}/*.h" "src/${CE_GAME_NAME}/**/*.c" "src/${CE_GAME_NAME}/**/*.h")
 
 # Tests Files
 file(GLOB TESTS "src/tests/*.c" "src/tests/*.h" "src/tests/**/*.c" "src/tests/**/*.h")
@@ -156,6 +158,8 @@ if (NOT TOOLCHAIN STREQUAL "armgcc")
 		target_compile_options(coretests PRIVATE /wd5045)
 	endif()
 	
+	# Note: coretests always uses CE_ENGINE_GAME_DIR=game regardless of CE_GAME_NAME
+	# to prevent game-specific code from breaking the test suite.
 	target_compile_definitions(coretests PRIVATE CE_CORE_TEST_MODE CE_ENGINE_GAME_DIR=game)
 
 	# Register test with CTest
@@ -174,12 +178,14 @@ if (TOOLCHAIN STREQUAL "armgcc")
 		CE_BACKEND_PLAYDATE
 		CE_ARM_BUILD
 		PRINTF_INCLUDE_CONFIG_H=1  # ensure printf.c reads printf_config.h in all compile contexts
+		CE_ENGINE_GAME_DIR=${CE_GAME_NAME}
 	)
 	target_link_libraries(${PLAYDATE_GAME_DEVICE} PRIVATE printf)
 else()
 	add_library(${PLAYDATE_GAME_NAME} SHARED src/main.c ${CORE} ${UTILS} ${ENGINE} ${GAME})
 	target_include_directories(${PLAYDATE_GAME_NAME} PRIVATE ${cc_SOURCE_DIR} PRIVATE ${printf_library_SOURCE_DIR}/src/printf ${CMAKE_SOURCE_DIR}/src)
 	target_compile_definitions(${PLAYDATE_GAME_NAME} PRIVATE CE_BACKEND_PLAYDATE)
+		target_compile_definitions(${PLAYDATE_GAME_NAME} PRIVATE CE_ENGINE_GAME_DIR=${CE_GAME_NAME})
 	target_link_libraries(${PLAYDATE_GAME_NAME} PRIVATE printf)
 endif()
 

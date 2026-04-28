@@ -42,7 +42,7 @@
 *.idb
 *.pdb
 
-# Kernel Module Compile Results
+# Compile Results
 *.mod*
 *.cmd
 .tmp_versions/
@@ -50,15 +50,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-/build.nmake
-/build.pd.release
-/build.pd
-/build.vs2022
-/corgo_engine.pdx
-/corgo_engine_DEVICE.pdx
-/corgo_engine_RELEASE.pdx
 /.sentry-native
 /3rdParty
 .github/copilot-session.md
 /Testing
 crashlog.txt
+/build.*
+/*.pdx

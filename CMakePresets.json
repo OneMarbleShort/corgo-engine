@@ -14,6 +14,26 @@
       "binaryDir": "${sourceDir}/build.vs2022"
     },
     {
+      "name": "game-vs2022-sim",
+      "displayName": "VS2022 Simulator (game)",
+      "description": "Builds src/game/ — the default blank game template. To add your own game, duplicate this preset, change CE_GAME_NAME and binaryDir to match your src/<name>/ directory.",
+      "inherits": "vs2022-sim",
+      "binaryDir": "${sourceDir}/build.vs2022.game",
+      "cacheVariables": {
+        "CE_GAME_NAME": "game"
+      }
+    },
+    {
+      "name": "samples-vs2022-sim",
+      "displayName": "VS2022 Simulator (samples)",
+      "description": "Builds src/samples/ — the built-in engine samples collection.",
+      "inherits": "vs2022-sim",
+      "binaryDir": "${sourceDir}/build.vs2022.samples",
+      "cacheVariables": {
+        "CE_GAME_NAME": "samples"
+      }
+    },
+    {
       "name": "sim-compat",
       "displayName": "Simulator Compatibility (VS2022)",
       "description": "Compatibility preset for tooling; uses VS2022 generator to avoid NMake environment issues.",
@@ -39,6 +59,26 @@
       }
     },
     {
+      "name": "game-pd-debug",
+      "displayName": "Playdate Device Debug (game)",
+      "description": "Builds src/game/ for Playdate device debug.",
+      "inherits": "pd-debug",
+      "binaryDir": "${sourceDir}/build.pd.game",
+      "cacheVariables": {
+        "CE_GAME_NAME": "game"
+      }
+    },
+    {
+      "name": "samples-pd-debug",
+      "displayName": "Playdate Device Debug (samples)",
+      "description": "Builds src/samples/ for Playdate device debug.",
+      "inherits": "pd-debug",
+      "binaryDir": "${sourceDir}/build.pd.samples",
+      "cacheVariables": {
+        "CE_GAME_NAME": "samples"
+      }
+    },
+    {
       "name": "pd-release",
       "displayName": "Playdate Device Release",
       "description": "Playdate ARM release configure using arm toolchain. Requires NMAKE_PATH env var (run 'Device: configure (Debug)' task once to set it).",
@@ -49,6 +89,26 @@
         "CMAKE_MAKE_PROGRAM": "$penv{NMAKE_PATH}",
         "CMAKE_TOOLCHAIN_FILE": "c:/PlaydateSDK/C_API/buildsupport/arm.cmake"
       }
+    },
+    {
+      "name": "game-pd-release",
+      "displayName": "Playdate Device Release (game)",
+      "description": "Builds src/game/ for Playdate device release.",
+      "inherits": "pd-release",
+      "binaryDir": "${sourceDir}/build.pd.release.game",
+      "cacheVariables": {
+        "CE_GAME_NAME": "game"
+      }
+    },
+    {
+      "name": "samples-pd-release",
+      "displayName": "Playdate Device Release (samples)",
+      "description": "Builds src/samples/ for Playdate device release.",
+      "inherits": "pd-release",
+      "binaryDir": "${sourceDir}/build.pd.release.samples",
+      "cacheVariables": {
+        "CE_GAME_NAME": "samples"
+      }
     }
   ],
   "buildPresets": [
@@ -56,6 +116,18 @@
       "name": "build-vs2022-sim",
       "displayName": "Build VS2022 Simulator",
       "configurePreset": "vs2022-sim",
+      "configuration": "Debug"
+    },
+    {
+      "name": "build-game-vs2022-sim",
+      "displayName": "Build VS2022 Simulator (game)",
+      "configurePreset": "game-vs2022-sim",
+      "configuration": "Debug"
+    },
+    {
+      "name": "build-samples-vs2022-sim",
+      "displayName": "Build VS2022 Simulator (samples)",
+      "configurePreset": "samples-vs2022-sim",
       "configuration": "Debug"
     },
     {
@@ -75,9 +147,29 @@
       "configurePreset": "pd-debug"
     },
     {
+      "name": "build-game-pd-debug",
+      "displayName": "Build Playdate Device Debug (game)",
+      "configurePreset": "game-pd-debug"
+    },
+    {
+      "name": "build-samples-pd-debug",
+      "displayName": "Build Playdate Device Debug (samples)",
+      "configurePreset": "samples-pd-debug"
+    },
+    {
       "name": "build-pd-release",
       "displayName": "Build Playdate Device Release",
       "configurePreset": "pd-release"
+    },
+    {
+      "name": "build-game-pd-release",
+      "displayName": "Build Playdate Device Release (game)",
+      "configurePreset": "game-pd-release"
+    },
+    {
+      "name": "build-samples-pd-release",
+      "displayName": "Build Playdate Device Release (samples)",
+      "configurePreset": "samples-pd-release"
     }
   ],
   "testPresets": [

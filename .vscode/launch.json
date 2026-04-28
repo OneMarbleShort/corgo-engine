@@ -2,17 +2,30 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Build and Run Simulator",
+            "name": "Build and Run Simulator (game)",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${env:PLAYDATE_SDK_PATH}/bin/PlaydateSimulator.exe",
             "args": [
-                "${workspaceFolder}/corgo_engine.pdx"
+                "${workspaceFolder}/game.pdx"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "preLaunchTask": "CMake: build"
+        },
+        {
+            "name": "Run Simulator (samples)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${env:PLAYDATE_SDK_PATH}/bin/PlaydateSimulator.exe",
+            "args": [
+                "${workspaceFolder}/samples.pdx"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "preLaunchTask": "CMake: build (samples)"
         }
     ]
 }

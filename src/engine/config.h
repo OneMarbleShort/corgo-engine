@@ -21,7 +21,9 @@
 #define CE_ENGINE_ENABLE_ADAPTIVE_RENDERING 1
 
 // Game directory where game code is located
+#ifndef CE_ENGINE_GAME_DIR
 #define CE_ENGINE_GAME_DIR game
+#endif // CE_ENGINE_GAME_DIR
 
 // Default input map size
 #define CE_ENGINE_INPUT_MAP_STACK_SIZE 4

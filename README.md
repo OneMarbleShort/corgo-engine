@@ -66,8 +66,8 @@ To run:
 2. Run coretest.exe or use the CMake target
 
 ### Running Samples
-Building the source will compile all the included samples, these double as tests for the engine.
-Samples can be removed from the build by commenting out `CE_ENGINE_INCLUDE_SAMPLE_SCENES` in engine/config.h
+Use the included CMake presets to build the samples game.
+Samples are used to demonstrate engine features and double as tests
 
 ## 3rd Party Credits
 
