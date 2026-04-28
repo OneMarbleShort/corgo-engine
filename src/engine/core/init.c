@@ -29,19 +29,17 @@ CE_Result CE_Engine_Init(INOUT CE_ECS_Context *context, OUT CE_ERROR_CODE *error
     // Setup Screen
     CE_Display_SetRefreshRate(context, 60);
 
+#ifdef CE_ENGINE_SET_START_SCENE
     // Load Scene
     CE_Result result = CE_ERROR;
-#ifdef CE_ENGINE_SET_START_SCENE
     CE_Debug("Loading start scene: " CE_STRINGIFY(CE_ENGINE_SET_START_SCENE));
     result = CE_Scene_RequestLoad(context, CE_SCENE_LOAD_FUNCTION(CE_ENGINE_SET_START_SCENE), errorCode);
-#else
-    CE_Debug("Loading default scene: " CE_STRINGIFY(CE_ENGINE_DEFAULT_SCENE));
-    result = CE_Scene_RequestLoad(context, CE_SCENE_LOAD_FUNCTION(CE_ENGINE_DEFAULT_SCENE), errorCode);
-#endif
+
     if (result != CE_OK) {
         CE_Error("Failed to load start scene: %s", CE_GetErrorMessage(*errorCode));
         return CE_ERROR;
     }
+#endif // CE_ENGINE_SET_START_SCENE
 
     // Enable debug if in a debug build
 #ifdef CE_DEBUG_BUILD

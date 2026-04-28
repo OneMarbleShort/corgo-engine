@@ -17,14 +17,11 @@
 // Default display scale (1,2,4,8), may be changed in runtime by calling CE_Display_SetScale
 #define CE_ENGINE_SCALE_DEFAULT 1
 
-// Include sample scenes, comment line below to exclude them from the build
-#define CE_ENGINE_INCLUDE_SAMPLE_SCENES
-
 // Enable adaptive rendering, which tries to minimize power use and CPU use by skipping rendering
 #define CE_ENGINE_ENABLE_ADAPTIVE_RENDERING 1
 
-// The default scene to load on startup, only if CE_ENGINE_SET_START_SCENE is not defined
-#define CE_ENGINE_DEFAULT_SCENE SpriteDemo
+// Game directory where game code is located
+#define CE_ENGINE_GAME_DIR game
 
 // Default input map size
 #define CE_ENGINE_INPUT_MAP_STACK_SIZE 4

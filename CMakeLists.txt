@@ -156,7 +156,7 @@ if (NOT TOOLCHAIN STREQUAL "armgcc")
 		target_compile_options(coretests PRIVATE /wd5045)
 	endif()
 	
-	target_compile_definitions(coretests PRIVATE CE_CORE_TEST_MODE)
+	target_compile_definitions(coretests PRIVATE CE_CORE_TEST_MODE CE_ENGINE_GAME_DIR=game)
 
 	# Register test with CTest
 	add_test(NAME CoreTests COMMAND coretests)

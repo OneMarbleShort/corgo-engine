@@ -4,10 +4,6 @@
 //  Copyright (c) 2026 Carlos Camacho. All rights reserved.
 //
 
-// Doing this early to avoid including all engine headers when sample scenes are not included
-#include "engine/config.h"
-#ifdef CE_ENGINE_INCLUDE_SAMPLE_SCENES
-
 #include "engine/corgo.h"
 #include "engine/shortcuts/scene.h"
 
@@ -115,4 +111,3 @@ CE_DECLARE_SCENE_LOAD_DATA_FUNCTION(CrankDemo)
     return CE_OK;
 }
 
-#endif // CE_ENGINE_INCLUDE_SAMPLE_SCENES

@@ -31,7 +31,7 @@
 #endif
 
 // Game systems
-#include "../game/systems.h"
+#include CE_GET_GAME_INCLUDE(CE_ENGINE_GAME_DIR, systems)
 #ifndef CE_SYSTEM_DESC_GAME
 #define CE_SYSTEM_DESC_GAME(CE_SYSTEM_DESC)
 #endif

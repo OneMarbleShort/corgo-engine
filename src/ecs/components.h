@@ -11,6 +11,9 @@
 #include "types.h"
 #include "core/component.h"
 
+// Include engine config to get the game directory 
+#include "../engine/config.h"
+
 //// Build component list
 // Core ECS components
 #include "core/core_components.h"
@@ -31,7 +34,7 @@
 #endif
 
 // Game components
-#include "../game/components.h"
+#include CE_GET_GAME_INCLUDE(CE_ENGINE_GAME_DIR, components)
 #ifndef CE_COMPONENT_DESC_GAME
 #define CE_COMPONENT_DESC_GAME(CE_COMPONENT_DESC)
 #endif

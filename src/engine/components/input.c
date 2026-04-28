@@ -99,7 +99,6 @@ const char* CE_Engine_GetInputActionNameDebugStr(IN CE_INPUT_ACTIONS action)
 #ifdef CE_DEBUG_BUILD
     switch (action) {
 #define CE_IA_DESC(name) case CE_IA(name): return CE_STRINGIFY(CE_IA(name));
-        CE_INPUT_ACTIONS_SAMPLE_SCENES(CE_IA_DESC)
         CE_INPUT_ACTIONS_GAME(CE_IA_DESC)
 #undef CE_IA_DESC
         default: return "Unknown";

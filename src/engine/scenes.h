@@ -8,17 +8,9 @@
 #define CORGO_ENGINE_SCENES_H
 
 #include "engine/config.h"
-#ifdef CE_ENGINE_INCLUDE_SAMPLE_SCENES
 
-#include "engine/core/scene.h"
+// Include the active game scenes
+#include CE_GET_GAME_INCLUDE(CE_ENGINE_GAME_DIR, scenes)
 
-// The following are built-in demo scenes used to test and demonstrate engine features.
-CE_DECLARE_SCENE(SampleMenu)
-CE_DECLARE_SCENE(TextScroller)
-CE_DECLARE_SCENE(TextScroller2)
-CE_DECLARE_SCENE(InputDemo)
-CE_DECLARE_SCENE(CrankDemo)
-CE_DECLARE_SCENE(SpriteDemo)
 
-#endif // CE_ENGINE_INCLUDE_SAMPLE_SCENES
 #endif // CORGO_ENGINE_SCENES_H

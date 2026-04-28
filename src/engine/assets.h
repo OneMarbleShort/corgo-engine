@@ -9,8 +9,9 @@
 
 #include "ecs/types.h"
 #include "core/platform.h"
+#include "engine/config.h"
 
-#include "game/assets.h"
+#include CE_GET_GAME_INCLUDE(CE_ENGINE_GAME_DIR, assets)
 #ifndef CE_ASSET_TYPES_GAME
 #define CE_ASSET_TYPES_GAME(CE_ASSET_TYPE)
 #endif

@@ -25,16 +25,6 @@
 #include "components/sprite.h"
 #include "components/image.h"
 
-// Include demo scene components if sample scenes are enabled
-#ifdef CE_ENGINE_INCLUDE_SAMPLE_SCENES
-#include "sample_scenes/scene_data.h"
-
-#define CE_COMPONENT_DESC_SAMPLE_COMPONENTS(CE_COMPONENT_DESC) \
-	CE_COMPONENT_DESC(CE_TEXT_SCROLLER_SCENE_DATA_COMPONENT, 50, CE_TextScrollerSceneData, 1) \
-
-#else
-#define CE_COMPONENT_DESC_SAMPLE_COMPONENTS(CE_COMPONENT_DESC)
-#endif // CE_ENGINE_INCLUDE_SAMPLE_SCENES
 
 // Engine components uid range: 10-99
 
@@ -43,8 +33,6 @@
 	CE_COMPONENT_DESC(CE_SPRITE_COMPONENT, 11, CE_SpriteComponent, 32)\
 	CE_COMPONENT_DESC(CE_TEXT_LABEL_COMPONENT, 12, CE_TextLabelComponent, 16)\
 	CE_COMPONENT_DESC(CE_IMAGE_COMPONENT, 13, CE_ImageComponent, 32)\
-	CE_COMPONENT_DESC_SAMPLE_COMPONENTS(CE_COMPONENT_DESC)\
-
 
 
 #define CE_GLOBAL_COMPONENT_DESC_ENGINE(CE_GLOBAL_COMPONENT_DESC) \

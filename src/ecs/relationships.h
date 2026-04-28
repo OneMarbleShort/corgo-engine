@@ -8,6 +8,7 @@
 #define CORGO_ECS_RELATIONSHIPS_H
 
 #include "types.h"
+#include "engine/config.h"
 
 //// Build relationship type list
 // Core ECS relationships
@@ -23,7 +24,7 @@
 #endif
 
 // Game relationships
-#include "../game/relationships.h"
+#include CE_GET_GAME_INCLUDE(CE_ENGINE_GAME_DIR, relationships)
 #ifndef CE_RELATIONSHIP_DESC_GAME
 #define CE_RELATIONSHIP_DESC_GAME(CE_RELATIONSHIP_DESC)
 #endif

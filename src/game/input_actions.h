@@ -24,6 +24,12 @@
 
 #define CE_INPUT_ACTIONS_GAME(CE_IA_DESC) \
 
-
+/**
+ * Action maps go here, using the CE_DECLARE_ACTION_MAP_FUNCTION macro, which generates the necessary function declarations for that input map.
+ * For example:
+ * CE_DECLARE_ACTION_MAP_FUNCTION(MyInputMap)
+ * 
+ * See samples/input/sample.c for examples of how to implement input maps.
+ */
 
 #endif // CORGO_GAME_INPUT_ACTIONS_H

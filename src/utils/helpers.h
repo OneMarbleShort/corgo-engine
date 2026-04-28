@@ -35,6 +35,9 @@
 #define CE_STRINGIFY_HELPER(x) #x
 #define CE_STRINGIFY(x) CE_STRINGIFY_HELPER(x)
 
+#define CE_GET_GAME_INCLUDE_HELPER(game_name, include) game_name/include.h
+#define CE_GET_GAME_INCLUDE(game_name, include) CE_STRINGIFY(CE_GET_GAME_INCLUDE_HELPER(game_name, include))
+
 // popcnt
 #if(_WINDLL)
 	#define CE_popcnt __popcnt
