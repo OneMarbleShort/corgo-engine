@@ -27,7 +27,7 @@ CE_Result CE_Engine_Init(INOUT CE_ECS_Context *context, OUT CE_ERROR_CODE *error
     CE_Debug("Scene Graph Initialized in %f seconds", (double) CE_GetElapsedTime());
 
     // Setup Screen
-    CE_Display_SetRefreshRate(context, 60);
+    CE_Display_SetRefreshRate(context, CE_ENGINE_REFRESH_RATE_DEFAULT);
 
 #ifdef CE_ENGINE_SET_START_SCENE
     // Load Scene
