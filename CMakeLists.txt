@@ -85,13 +85,15 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(cc)
 set(CE_ENGINE_CC_SOURCE_DIR "${cc_SOURCE_DIR}" CACHE INTERNAL "CC include directory used by Corgo Engine")
 
-FetchContent_Declare(
-	unity
-	GIT_REPOSITORY https://github.com/ThrowTheSwitch/Unity.git
-	GIT_TAG v2.6.1
-	SOURCE_DIR ${CE_ENGINE_ROOT_DIR}/3rdParty/unity
-)
-FetchContent_MakeAvailable(unity)
+if (CE_ENGINE_IS_TOP_LEVEL)
+	FetchContent_Declare(
+		unity
+		GIT_REPOSITORY https://github.com/ThrowTheSwitch/Unity.git
+		GIT_TAG v2.6.1
+		SOURCE_DIR ${CE_ENGINE_ROOT_DIR}/3rdParty/unity
+	)
+	FetchContent_MakeAvailable(unity)
+endif()
 
 set(CMAKE_XCODE_GENERATE_SCHEME TRUE)
 
