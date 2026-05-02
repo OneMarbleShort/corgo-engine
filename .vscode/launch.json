@@ -26,6 +26,18 @@
             "cwd": "${workspaceFolder}",
             "environment": [],
             "preLaunchTask": "CMake: build (samples)"
+        },
+        {
+            "name": "Run Simulator Without Building (Samples)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${env:PLAYDATE_SDK_PATH}/bin/PlaydateSimulator.exe",
+            "args": [
+                "${workspaceFolder}/samples.pdx"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": []
         }
     ]
 }

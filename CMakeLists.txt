@@ -17,6 +17,10 @@ if (CE_ENGINE_IS_TOP_LEVEL)
 	set(CE_GAME_NAME "game" CACHE STRING "Game name: drives src/<name>/ source glob and <name>.pdx artifact")
 endif()
 
+# Optional scene symbol used to define CE_ENGINE_SET_START_SCENE at compile time.
+# Example: -DCE_ENGINE_START_SCENE=SpriteDemo
+set(CE_ENGINE_START_SCENE "" CACHE STRING "Optional start scene symbol for CE_ENGINE_SET_START_SCENE (leave empty to skip define)")
+
 include(CMakeParseArguments)
 include(FetchContent)
 
@@ -184,6 +188,11 @@ function(ce_add_playdate_game)
 		set(ce_game_device_name "${CE_GAME_NAME}_DEVICE")
 	endif()
 
+	set(ce_game_start_scene_define)
+	if (CE_ENGINE_START_SCENE)
+		list(APPEND ce_game_start_scene_define CE_ENGINE_SET_START_SCENE=${CE_ENGINE_START_SCENE})
+	endif()
+
 	file(GLOB ce_game_sources
 		"${CE_GAME_GAME_SOURCE_DIR}/*.c"
 		"${CE_GAME_GAME_SOURCE_DIR}/*.h"
@@ -223,6 +232,7 @@ function(ce_add_playdate_game)
 			CE_ARM_BUILD
 			PRINTF_INCLUDE_CONFIG_H=1
 			CE_ENGINE_GAME_DIR=${CE_GAME_GAME_DIR}
+			${ce_game_start_scene_define}
 		)
 		target_link_libraries(${PLAYDATE_GAME_DEVICE} PRIVATE printf)
 		add_dependencies(${PLAYDATE_GAME_DEVICE} ce_generate_build_info)
@@ -247,6 +257,7 @@ function(ce_add_playdate_game)
 			$<$<CONFIG:Debug>:CE_DEBUG_BUILD>
 			CE_BACKEND_PLAYDATE
 			CE_ENGINE_GAME_DIR=${CE_GAME_GAME_DIR}
+			${ce_game_start_scene_define}
 		)
 		target_link_libraries(${PLAYDATE_GAME_NAME} PRIVATE printf)
 		add_dependencies(${PLAYDATE_GAME_NAME} ce_generate_build_info)

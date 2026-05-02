@@ -17,6 +17,8 @@ CE_DECLARE_SCENE(CrankDemo) // A scene to demonstrate crank dock state and angle
 CE_DECLARE_SCENE(SpriteDemo)  // A scene to demonstrate sprite rendering and animation
 
 // Set this to the scene you want to load first
+#ifndef CE_ENGINE_SET_START_SCENE
 #define CE_ENGINE_SET_START_SCENE SpriteDemo
+#endif
 
 #endif // CORGO_SAMPLES_SCENES_H
