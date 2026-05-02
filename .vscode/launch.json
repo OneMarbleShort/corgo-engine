@@ -15,7 +15,7 @@
             "preLaunchTask": "CMake: build"
         },
         {
-            "name": "Run Simulator (samples)",
+            "name": "Build and Run Simulator (samples)",
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${env:PLAYDATE_SDK_PATH}/bin/PlaydateSimulator.exe",

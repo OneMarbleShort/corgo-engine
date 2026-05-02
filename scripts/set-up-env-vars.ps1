@@ -1,16 +1,11 @@
 #
-#  scripts/device-cmake.ps1
-#  Resolves nmake.exe and invokes cmake for device presets.
+#  scripts/set-up-env-vars.ps1
+#  Resolves nmake.exe and updates environment variables.
 #  Copyright (c) 2026 Carlos Camacho. All rights reserved.
 #
 #  Usage:
-#    device-cmake.ps1 -Preset pd-debug             # configure
-#    device-cmake.ps1 -Preset build-pd-debug -Build # build
+#    set-up-env-vars.ps1
 #
-param(
-    [Parameter(Mandatory)][string]$Preset,
-    [switch]$Build
-)
 
 # Resolve nmake.exe: honour NMAKE_PATH if already set, otherwise use vswhere.
 if (-not $env:NMAKE_PATH) {
@@ -33,11 +28,5 @@ if (-not $env:NMAKE_PATH) {
 }
 
 Write-Host "Using nmake: $env:NMAKE_PATH"
-
-if ($Build) {
-    cmake --build --preset $Preset
-} else {
-    cmake --preset $Preset
-}
 
 exit $LASTEXITCODE

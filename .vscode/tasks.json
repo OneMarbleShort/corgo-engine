@@ -65,10 +65,10 @@
 			"group": "build"
 		},
 		{
-			"label": "Device: configure (Debug)",
+			"label": "Set Up Env Variables",
 			"type": "shell",
 			"command": "powershell",
-			"args": ["-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/device-cmake.ps1", "-Preset", "pd-debug"],
+			"args": ["-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/set-up-env-vars.ps1"],
 			"isBackground": false,
 			"problemMatcher": [],
 			"group": "build"
@@ -78,15 +78,6 @@
 			"type": "shell",
 			"command": "powershell",
 			"args": ["-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/device-cmake.ps1", "-Preset", "build-pd-debug", "-Build"],
-			"isBackground": false,
-			"problemMatcher": [],
-			"group": "build"
-		},
-		{
-			"label": "Device: configure (Release)",
-			"type": "shell",
-			"command": "powershell",
-			"args": ["-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/device-cmake.ps1", "-Preset", "pd-release"],
 			"isBackground": false,
 			"problemMatcher": [],
 			"group": "build"

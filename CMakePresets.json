@@ -15,6 +15,32 @@
       "hidden":true
     },
     {
+      "name": "pd-debug",
+      "displayName": "Playdate Device Debug",
+      "description": "Playdate ARM debug configure using arm toolchain. Requires NMAKE_PATH env var (run 'Device: configure (Debug)' task once to set it).",
+      "generator": "NMake Makefiles",
+      "binaryDir": "${sourceDir}/build.pd",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_MAKE_PROGRAM": "$penv{NMAKE_PATH}",
+        "CMAKE_TOOLCHAIN_FILE": "${env:PLAYDATE_SDK_PATH}/C_API/buildsupport/arm.cmake"
+      },
+      "hidden":true
+    },
+    {
+      "name": "pd-release",
+      "displayName": "Playdate Device Release",
+      "description": "Playdate ARM release configure using arm toolchain. Requires NMAKE_PATH env var (run 'Device: configure (Debug)' task once to set it).",
+      "generator": "NMake Makefiles",
+      "binaryDir": "${sourceDir}/build.pd.release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_MAKE_PROGRAM": "$penv{NMAKE_PATH}",
+        "CMAKE_TOOLCHAIN_FILE": "${env:PLAYDATE_SDK_PATH}/C_API/buildsupport/arm.cmake"
+      },
+      "hidden":true
+    },
+    {
       "name": "game-vs2022-sim",
       "displayName": "VS2022 Simulator (game)",
       "description": "Builds src/game/ — the default blank game template. To add your own game, duplicate this preset, change CE_GAME_NAME and binaryDir to match your src/<name>/ directory.",
@@ -35,19 +61,6 @@
       }
     },
     {
-      "name": "pd-debug",
-      "displayName": "Playdate Device Debug",
-      "description": "Playdate ARM debug configure using arm toolchain. Requires NMAKE_PATH env var (run 'Device: configure (Debug)' task once to set it).",
-      "generator": "NMake Makefiles",
-      "binaryDir": "${sourceDir}/build.pd",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug",
-        "CMAKE_MAKE_PROGRAM": "$penv{NMAKE_PATH}",
-        "CMAKE_TOOLCHAIN_FILE": "c:/PlaydateSDK/C_API/buildsupport/arm.cmake"
-      },
-      "hidden":true
-    },
-    {
       "name": "game-pd-debug",
       "displayName": "Playdate Device Debug (game)",
       "description": "Builds src/game/ for Playdate device debug.",
@@ -66,19 +79,6 @@
       "cacheVariables": {
         "CE_GAME_NAME": "samples"
       }
-    },
-    {
-      "name": "pd-release",
-      "displayName": "Playdate Device Release",
-      "description": "Playdate ARM release configure using arm toolchain. Requires NMAKE_PATH env var (run 'Device: configure (Debug)' task once to set it).",
-      "generator": "NMake Makefiles",
-      "binaryDir": "${sourceDir}/build.pd.release",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_MAKE_PROGRAM": "$penv{NMAKE_PATH}",
-        "CMAKE_TOOLCHAIN_FILE": "c:/PlaydateSDK/C_API/buildsupport/arm.cmake"
-      },
-      "hidden":true
     },
     {
       "name": "game-pd-release",
