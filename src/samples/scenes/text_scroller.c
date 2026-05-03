@@ -101,12 +101,4 @@ CE_DECLARE_SCENE_RUN_FUNCTION(TextScroller)
     return CE_OK;
 }
 
-CE_DECLARE_SCENE_LOAD_DATA_FUNCTION(TextScroller)
-{
-    // Populate the scene data with the scene id and function pointers
-    scene->m_id = "TextScroller";
-    scene->m_createFunction = CE_SCENE_CREATE_FUNCTION(TextScroller);
-    scene->m_runFunction = CE_SCENE_RUN_FUNCTION(TextScroller);
-    scene->m_scriptDataComponentType = CE_TEXT_SCROLLER_SCENE_DATA_COMPONENT;
-    return CE_OK;
-}
+CE_GENERATE_SCENE(TextScroller, CE_TEXT_SCROLLER_SCENE_DATA_COMPONENT)

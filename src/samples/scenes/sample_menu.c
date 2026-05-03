@@ -35,12 +35,4 @@ CE_DECLARE_SCENE_RUN_FUNCTION(SampleMenu)
     return CE_OK;
 }
 
-CE_DECLARE_SCENE_LOAD_DATA_FUNCTION(SampleMenu)
-{
-    // Populate the scene data with the scene id and function pointers
-    scene->m_id = "SampleMenu";
-    scene->m_createFunction = CE_SCENE_CREATE_FUNCTION(SampleMenu);
-    scene->m_runFunction = CE_SCENE_RUN_FUNCTION(SampleMenu);
-    scene->m_scriptDataComponentType = CE_INVALID_TYPE_ID;
-    return CE_OK;
-}
+CE_GENERATE_SCENE(SampleMenu, CE_INVALID_TYPE_ID)

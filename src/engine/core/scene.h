@@ -165,4 +165,21 @@ bool CE_Scene_IsSceneRunning(INOUT struct CE_ECS_Context* context);
     CE_DECLARE_SCENE_CREATE_FUNCTION(sceneName); \
     CE_DECLARE_SCENE_RUN_FUNCTION(sceneName);
 
+
+/**
+ * @brief Macro to generate the scene load data function with the correct signature and populate the scene data.
+ * @param sceneName[in] unique name for the scene
+ * @param sceneData[in] component type ID of the script data component for this scene, or CE_INVALID_TYPE_ID if it doesn't have one
+ */
+#define CE_GENERATE_SCENE(sceneName, sceneData) \
+CE_DECLARE_SCENE_LOAD_DATA_FUNCTION(sceneName)\
+{\
+    scene->m_id = #sceneName;\
+    scene->m_createFunction = CE_SCENE_CREATE_FUNCTION(sceneName);\
+    scene->m_runFunction = CE_SCENE_RUN_FUNCTION(sceneName);\
+    scene->m_scriptDataComponentType = sceneData;\
+    return CE_OK;\
+}\
+
+
 #endif // CORGO_ENGINE_CORE_SCENE_H

@@ -102,12 +102,5 @@ CE_DECLARE_SCENE_RUN_FUNCTION(CrankDemo)
 
 #undef CES_RAW_INPUT_IS_ACTIVE
 
-CE_DECLARE_SCENE_LOAD_DATA_FUNCTION(CrankDemo)
-{
-    scene->m_id = "CrankDemo";
-    scene->m_createFunction = CE_SCENE_CREATE_FUNCTION(CrankDemo);
-    scene->m_runFunction = CE_SCENE_RUN_FUNCTION(CrankDemo);
-    scene->m_scriptDataComponentType = CE_INVALID_TYPE_ID;
-    return CE_OK;
-}
+CE_GENERATE_SCENE(CrankDemo, CE_INVALID_TYPE_ID)
 

@@ -147,12 +147,4 @@ CE_DECLARE_SCENE_RUN_FUNCTION(SpriteDemo)
     return CE_OK;
 }
 
-CE_DECLARE_SCENE_LOAD_DATA_FUNCTION(SpriteDemo)
-{
-    // Populate the scene data with the scene id and function pointers
-    scene->m_id = "SpriteDemo";
-    scene->m_createFunction = CE_SCENE_CREATE_FUNCTION(SpriteDemo);
-    scene->m_runFunction = CE_SCENE_RUN_FUNCTION(SpriteDemo);
-    scene->m_scriptDataComponentType = CE_INVALID_TYPE_ID;
-    return CE_OK;
-}
+CE_GENERATE_SCENE(SpriteDemo, CE_INVALID_TYPE_ID)

@@ -243,13 +243,5 @@ CE_DECLARE_SCENE_RUN_FUNCTION(InputDemo)
     return CE_OK;
 }
 
-CE_DECLARE_SCENE_LOAD_DATA_FUNCTION(InputDemo)
-{
-    // Populate the scene data with the scene id and function pointers
-    scene->m_id = "InputDemo";
-    scene->m_createFunction = CE_SCENE_CREATE_FUNCTION(InputDemo);
-    scene->m_runFunction = CE_SCENE_RUN_FUNCTION(InputDemo);
-    scene->m_scriptDataComponentType = CE_INVALID_TYPE_ID;
-    return CE_OK;
-}
+CE_GENERATE_SCENE(InputDemo, CE_INVALID_TYPE_ID)
 
