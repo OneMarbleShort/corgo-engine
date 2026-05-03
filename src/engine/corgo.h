@@ -9,7 +9,6 @@
 #define CORGO_ENGINE_CORGO_H
 
 #include "config.h"
-#include "build_info.h"
 #include "core/platform.h"
 #include "core/memory.h"
 #include "core/display.h"

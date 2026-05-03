@@ -6,6 +6,8 @@
 
 #include "engine/corgo.h"
 
+// Including it here to avoid touching the public header and causing unnecessary rebuilds.
+#include "build_info.h"
 
 CE_Result CE_Engine_Init(INOUT CE_ECS_Context *context, OUT CE_ERROR_CODE *errorCode)
 {
