@@ -13,6 +13,7 @@
 #endif
 
 static bool CE_Logging_enabled = true;
+static CE_PauseCallback CE_pauseCallback = NULL;
 
 #ifdef CE_BACKEND_PLAYDATE
 static PlaydateAPI* CE_pd = NULL;
@@ -27,6 +28,16 @@ void CE_SetPlaydateAPI(PlaydateAPI* pd)
     CE_pd = pd;
 }
 #endif
+
+void CE_RegisterPauseCallback(CE_PauseCallback callback)
+{
+    CE_pauseCallback = callback;
+}
+
+CE_PauseCallback CE_GetPauseCallback(void)
+{
+    return CE_pauseCallback;
+}
 
 void CE_Printf(const char* format, ...) {
 #ifndef CE_ARM_BUILD

@@ -18,6 +18,29 @@ void CE_SetPlaydateAPI(PlaydateAPI* pd);
 
 #endif // CE_BACKEND_PLAYDATE
 
+// System pause callback
+
+/**
+ * @brief Callback invoked when the system pauses the game (e.g. the Playdate system menu opens).
+ * Useful for updating the system menu image before it is shown.
+ */
+typedef void (*CE_PauseCallback)(void);
+
+/**
+ * @brief Register a callback to be invoked when the system pauses the game.
+ * Passing NULL clears the callback.
+ *
+ * @param callback Function to call on pause, or NULL.
+ */
+void CE_RegisterPauseCallback(CE_PauseCallback callback);
+
+/**
+ * @brief Get the currently registered pause callback.
+ *
+ * @return The registered callback, or NULL if none is registered.
+ */
+CE_PauseCallback CE_GetPauseCallback(void);
+
 // Logging functions
 
 // Utility function to pretty print to console

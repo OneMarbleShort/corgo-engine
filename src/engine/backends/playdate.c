@@ -52,6 +52,14 @@ int eventHandler(PlaydateAPI* pd, PDSystemEvent event, uint32_t arg)
 		pd->system->setUpdateCallback(update, pd);
 	}
 
+	if (event == kEventPause)
+	{
+		CE_PauseCallback pauseCallback = CE_GetPauseCallback();
+		if (pauseCallback != NULL) {
+			pauseCallback();
+		}
+	}
+
 	if (event == kEventTerminate)
 	{
 		if (CE_Engine_Shutdown(ecsContext, &errorCode) != CE_OK) {
